@@ -11,6 +11,7 @@
     <p>This add-in will insert the a new message.</p>
     <button id="helloButton">Say Hi</button>
     <button id="wordCount">Words Count</button>
+    <div id="displayCount"></div>
 </body>
 
 <script>
@@ -42,7 +43,7 @@
         );
     }
 
-    function wordCount() {
+    function countWords() {
         Office.context.mailbox.item.body.getAsync((asyncResult) => {
             if (asyncResult.status ==
                 Office.AsyncResultStatus.Failed) {
@@ -50,6 +51,7 @@
             }
 
             write(asyncResult);
+            document.getElementById("displayCount").innerText="30";
         })
     }
 
