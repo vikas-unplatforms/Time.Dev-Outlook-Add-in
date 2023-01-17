@@ -44,15 +44,16 @@
     }
 
     function countWords() {
-        Office.context.mailbox.item.body.getAsync((asyncResult) => {
-            if (asyncResult.status ==
-                Office.AsyncResultStatus.Failed) {
-                write(asyncResult.error.message);
+        var body = Office.context.mailbox.item.body;
+        // Get the body asynchronous as text
+        body.getAsync(Office.CoercionType.Text, function (asyncResult) {
+            if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                // do something with the error
+            } else {
+                // $('.result').html(asyncResult.value);
+                document.getElementById("displayCount").innerHTML = asyncResult;
             }
-
-            write(asyncResult);
-            document.getElementById("displayCount").innerText="30";
-        })
+        });
     }
 
 </script>
