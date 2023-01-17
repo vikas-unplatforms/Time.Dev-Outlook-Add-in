@@ -51,7 +51,8 @@
                 // do something with the error
             } else {
                 // $('.result').html(asyncResult.value);
-                document.getElementById("displayCount").innerHTML = asyncResult.value;
+                const str = asyncResult.value;
+                document.getElementById("displayCount").innerHTML = asyncResult+str.split(" ").length;
             }
         });
     }
