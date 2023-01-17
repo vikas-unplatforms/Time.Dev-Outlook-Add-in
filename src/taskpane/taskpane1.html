@@ -52,7 +52,7 @@
             } else {
                 // $('.result').html(asyncResult.value);
                 const str = asyncResult.value;
-                document.getElementById("displayCount").innerHTML = asyncResult+str.split(" ").length;
+                document.getElementById("displayCount").innerHTML = asyncResult.value+"... word Count: "+str.split(" ").length;
             }
         });
     }
