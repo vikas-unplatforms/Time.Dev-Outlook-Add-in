@@ -26,7 +26,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://vikas-unplatforms.github.io/Time.Dev-Outlook-Add-in/src/taskpane/taskpane1.html"/>
+        <SourceLocation DefaultValue="https://vikas-unplatforms.github.io/Time.Dev-Outlook-Add-in/src/taskpane/taskpane2.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -80,7 +80,7 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://vikas-unplatforms.github.io/Time.Dev-Outlook-Add-in/src/taskpane/taskpane1.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://vikas-unplatforms.github.io/Time.Dev-Outlook-Add-in/src/taskpane/taskpane2.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in"/>
