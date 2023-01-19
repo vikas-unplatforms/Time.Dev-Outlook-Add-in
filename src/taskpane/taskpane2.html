@@ -48,13 +48,11 @@
             } else {
                 // $('.result').html(asyncResult.value);
                 const str = asyncResult.value;
-                document.getElementById("displayCount").innerHTML += asyncResult.value + "... word Count: " + str.split(" ").length;
+                document.getElementById("displayCount").innerHTML = asyncResult.value + "... word Count: " + str.split(" ").length;
             }
         });
         const requiredAttendees = Office.context.mailbox.item.requiredAttendees;
-        console.log("There are " + requiredAttendees.length + " required attendees.")
         requiredAttendees.forEach(function (requiredAttendee) {
-            console.log("Attendee " + requiredAttendee.displayName + ": " + requiredAttendee.appointmentResponse);
             document.getElementById("displayCount").innerHTML += "\n " + "Attendee " + requiredAttendee.displayName + ": " + requiredAttendee.appointmentResponse;
         });
     }
