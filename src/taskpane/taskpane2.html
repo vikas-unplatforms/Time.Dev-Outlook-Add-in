@@ -10,7 +10,9 @@
     <button id="helloButton">Say Hi</button>
     <button id="wordCount">Words Count</button>
     <div id="displayCount"></div>
-    <div id="name"></div>
+    <div id="subject">subject:<br></div>
+    <div id="ccValues">cc Values:<br></div>
+    <div id="toValues">to Values:<br></div>
 </body>
 
 <script>
@@ -59,7 +61,7 @@
                 console.log("Message being sent to:");
                 for (let i = 0; i < msgTo.length; i++) {
                     console.log(msgTo[i].displayName + " (" + msgTo[i].emailAddress + ")");
-                    document.getElementById("displayCount").innerHTML += "\n " + msgTo[i].displayName + " (" + msgTo[i].emailAddress + ")";
+                    document.getElementById("toValues").innerHTML += "\n " + msgTo[i].displayName + " (" + msgTo[i].emailAddress + ")";
                 }
             } else {
                 console.error(asyncResult.error);
@@ -72,15 +74,15 @@
                 return;
             }
             console.log(`Subject: ${result.value}`);
+            document.getElementById("toValues").innerHTML += "\n" + result.value;
         });
         //to get cc values
         Office.context.mailbox.item.cc.getAsync(function (asyncResult) {
             if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
                 const msgCc = asyncResult.value;
-                document.getElementById("displayCount").innerHTML += "\n cc values :"
                 for (let i = 0; i < msgCc.length; i++) {
                     console.log(msgCc[i].displayName + " (" + msgCc[i].emailAddress + ")");
-                    document.getElementById("displayCount").innerHTML += "\n" + msgCc[i].displayName + " (" + msgCc[i].emailAddress + ")";
+                    document.getElementById("ccValues").innerHTML += "\n" + msgCc[i].displayName + " (" + msgCc[i].emailAddress + ")";
                 }
             } else {
                 console.error(asyncResult.error);
