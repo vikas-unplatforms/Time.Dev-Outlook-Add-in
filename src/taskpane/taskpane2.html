@@ -74,7 +74,7 @@
                 return;
             }
             console.log(`Subject: ${result.value}`);
-            document.getElementById("toValues").innerHTML += "\n" + result.value;
+            document.getElementById("subject").innerHTML += "\n" + result.value;
         });
         //to get cc values
         Office.context.mailbox.item.cc.getAsync(function (asyncResult) {
