@@ -10,6 +10,7 @@
     <button id="helloButton">Say Hi</button>
     <button id="wordCount">Words Count</button>
     <div id="displayCount"></div>
+    <div id="name"></div>
 </body>
 
 <script>
@@ -55,6 +56,8 @@
         requiredAttendees.forEach(function (requiredAttendee) {
             document.getElementById("displayCount").innerHTML += "\n " + "Attendee " + requiredAttendee.displayName + ": " + requiredAttendee.appointmentResponse;
         });
+        const organizerName = Office.context.mailbox.item.organizer.displayName;
+        document.getElementById("name").innerText=organizerName;
     }
 
 </script>
