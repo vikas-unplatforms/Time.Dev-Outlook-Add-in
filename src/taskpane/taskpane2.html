@@ -52,12 +52,40 @@
                 document.getElementById("displayCount").innerHTML = asyncResult.value + "... word Count: " + str.split(" ").length;
             }
         });
-        const requiredAttendees = Office.context.mailbox.item.requiredAttendees;
-        requiredAttendees.forEach(function (requiredAttendee) {
-            document.getElementById("displayCount").innerHTML += "\n " + "Attendee " + requiredAttendee.displayName + ": " + requiredAttendee.appointmentResponse;
+        //to mail values
+        Office.context.mailbox.item.to.getAsync(function (asyncResult) {
+            if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                const msgTo = asyncResult.value;
+                console.log("Message being sent to:");
+                for (let i = 0; i < msgTo.length; i++) {
+                    console.log(msgTo[i].displayName + " (" + msgTo[i].emailAddress + ")");
+                    document.getElementById("displayCount").innerHTML += "\n " + msgTo[i].displayName + " (" + msgTo[i].emailAddress + ")";
+                }
+            } else {
+                console.error(asyncResult.error);
+            }
         });
-        const organizerName = Office.context.mailbox.item.organizer.displayName;
-        document.getElementById("name").innerText=organizerName;
+        //text in subject
+        Office.context.mailbox.item.subject.getAsync((result) => {
+            if (result.status !== Office.AsyncResultStatus.Succeeded) {
+                console.error(`Action failed with message ${result.error.message}`);
+                return;
+            }
+            console.log(`Subject: ${result.value}`);
+        });
+        //to get cc values
+        Office.context.mailbox.item.cc.getAsync(function (asyncResult) {
+            if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                const msgCc = asyncResult.value;
+                document.getElementById("displayCount").innerHTML += "\n cc values :"
+                for (let i = 0; i < msgCc.length; i++) {
+                    console.log(msgCc[i].displayName + " (" + msgCc[i].emailAddress + ")");
+                    document.getElementById("displayCount").innerHTML += "\n" + msgCc[i].displayName + " (" + msgCc[i].emailAddress + ")";
+                }
+            } else {
+                console.error(asyncResult.error);
+            }
+        });
     }
 
 </script>
